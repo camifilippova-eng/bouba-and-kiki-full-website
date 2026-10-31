@@ -256,7 +256,7 @@ function mk(card,c){var m=h('div','mk'),used=c.hook?[c.hook]:[];m.appendChild(h(
   if(!API_URL)return lc('Это быстрый набросок по твоим словам. Подключённый помощник рисует подробнее.');
   fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({word:c.w,draw:1,t:c.t,tr:t,hook:k,scene:s})})
   .then(function(x){if(!x.ok)throw 0;return x.json()})
-  .then(function(d){var n=clean(d.svg);if(!n)throw 0;fin(n,'Картинка нарисована по твоим ответам. Не нравится? Измени сцену и собери клей заново.')})
+  .then(function(d){if(!d||typeof d.img!=='string'||!/^data:image\/(jpeg|png);base64,[A-Za-z0-9+\/=]+$/.test(d.img))throw 0;var im=h('img');im.alt='Картинка к клею: '+k;im.style.cssText='display:block;width:100%;height:auto;border-radius:14px';im.src=d.img;fin(im,'Картинка нарисована по твоим ответам. Не нравится? Нажми «Нарисовать заново» или измени сцену.')})
   .catch(function(){lc('Помощник не смог нарисовать, вот быстрый набросок.')})}
  function f(l,v,ph){var lb=h('label','',l),i=h('input');i.value=v||'';i.placeholder=ph;i.maxLength=90;lb.appendChild(i);m.appendChild(lb);return i}
  var tr=f('Перевод',c.tr,'например: колючий'),hk=f('Звуковой крючок: русское слово, похожее на слово на слух',c.hook,'например: ёж СПАЙК'),sc=f('Что происходит в кадре (перевод должен быть героем)',c.sc,'например: ёжик лопает шарик');
