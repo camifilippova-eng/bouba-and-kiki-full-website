@@ -1,6 +1,7 @@
-// Cloudflare Worker: прокси между сайтом на Tilda и Claude API (ключ хранится только здесь).
-// Settings → Variables: секрет ANTHROPIC_API_KEY; переменная ALLOWED_ORIGIN = адрес сайта
-// (например https://project123.tilda.ws; несколько адресов через запятую); необязательно MODEL.
+// Cloudflare Worker: прокси между сайтом и Google Gemini API (ключ хранится только здесь).
+// Settings → Variables and Secrets: секрет GEMINI_API_KEY; переменная ALLOWED_ORIGIN = адрес сайта
+// (например https://login.github.io или https://project123.tilda.ws; несколько адресов через запятую);
+// необязательно MODEL (по умолчанию gemini-flash-latest).
 const SYSTEM = `Ты помощник школьного проекта «Секрет Буба и Кики». Пользователь присылает одно английское слово. Верни ТОЛЬКО JSON без пояснений и без markdown.
 Метод книги, три шага:
 1) СКАНИРУЙ: определи тип. КИКИ = острое, резкое, быстрое, колкое (звуки к,т,п,ц,ч,с, гласные и/э/ай). БУБА = мягкое, круглое, плавное (б,м,л,н,в, гласные у/о/оу). МИКС = и то и другое. Если звук и смысл спорят, побеждает смысл. Абстрактные слова начинай с эмоции. Для миксов: Буба главный герой, Кики сцена действия.
@@ -66,14 +67,21 @@ export default {
         : '\nУже использованные крючки (не повторяй): ' + avoid.join('; ');
     }
     if (draw) userText = 'Слово: ' + word + '\nТип: ' + kind + '\nПеревод (герой кадра): ' + tr + '\nЗвуковой крючок: ' + hook + '\nСцена: ' + scn;
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
+    const system = draw ? SYSTEM_DRAW : assoc ? SYSTEM_ASSOC : more ? SYSTEM_MORE : SYSTEM;
+    const model = env.MODEL || 'gemini-flash-latest';
+    const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent', {
       method: 'POST',
-      headers: { 'content-type': 'application/json', 'x-api-key': env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model: env.MODEL || 'claude-sonnet-5-5', max_tokens: assoc ? 2800 : draw ? 3000 : 1200, system: draw ? SYSTEM_DRAW : assoc ? SYSTEM_ASSOC : more ? SYSTEM_MORE : SYSTEM, messages: [{ role: 'user', content: userText }] })
+      headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: system }] },
+        contents: [{ role: 'user', parts: [{ text: userText }] }],
+        generationConfig: { maxOutputTokens: 8192, responseMimeType: 'application/json' }
+      })
     });
-    if (!r.ok) return new Response('Upstream error', { status: 502, headers: cors });
+    if (!r.ok) return new Response('Upstream error ' + r.status, { status: 502, headers: cors });
     const data = await r.json();
-    const text = (data.content || []).map(b => b.text || '').join('').replace(/```json|```/g, '').trim();
+    const parts = (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
+    const text = parts.filter(b => !b.thought).map(b => b.text || '').join('').replace(/```json|```/g, '').trim();
     try { const j = JSON.parse(text); if (assoc && !Array.isArray(j.items)) throw 0; if (draw && !(typeof j.svg === 'string' && /^<svg/i.test(j.svg.trim()) && j.svg.length < 12000 && !/<script|<foreignObject|<image|href|\bon\w+\s*=/i.test(j.svg))) throw 0; } catch { return new Response('Bad model output', { status: 502, headers: cors }); }
     return new Response(text, { headers: { ...cors, 'Content-Type': 'application/json' } });
   }
