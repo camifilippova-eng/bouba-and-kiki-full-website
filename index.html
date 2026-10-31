@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Секрет Буба и Кики: запоминай английские слова без зубрёжки</title>
+<meta name="description" content="Эффект «Буба – Кики», нейро-конструктор образов и ИИ-помощник для запоминания английских слов.">
+<style>html{scroll-behavior:smooth}body{margin:0;background:#F8F1E3}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<style>
+#bk{--v:#42268A;--v2:#6B45CF;--b:#2A8FD6;--r:#E8402A;--y:#F0A800;--g:#1F9A6B;--p:#D6408A;--cream:#F8F1E3;--lav:#EAE4FA;--ink:#1E1A3C;--rb:#FADFD8;--bb:#DCEEFA;--yb:#FFEFC7;
+font:400 18px/1.6 Nunito,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream);box-sizing:border-box;overflow:hidden;text-align:left
+*,*::before,*::after{box-sizing:inherit}
+h1,h2,h3{font-family:Unbounded,"Trebuchet MS",sans-serif;line-height:1.15;margin:0 0 .6em;font-weight:800}
+h2{font-size:clamp(25px,4vw,38px);color:var(--v)}
+h3{font-size:19px}
+p{margin:0 0 1em}
+a{color:inherit}
+button{font:800 17px Nunito,sans-serif;cursor:pointer;border:0;border-radius:999px;padding:13px 26px;background:var(--y);color:var(--ink)}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+svg{display:block;width:100%;height:auto}
+[hidden]{display:none!important}
+.w{max-width:1040px;margin:0 auto;padding:64px 20px}
+.hero{background:var(--v);color:#fff;margin:14px;border-radius:32px;padding:clamp(26px,6vw,64px);display:grid;grid-template-columns:1.15fr 1fr;gap:24px;align-items:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:240px;height:240px;border-radius:50%;background:#ffffff;opacity:.1}
+.hero h1{font-size:clamp(36px,6vw,66px);line-height:1.05;margin:.2em 0 .4em;font-family:Unbounded,sans-serif}
+.hero .kb{color:#7CC4FF}.hero .kk{color:#FF8E72}
+.hero p{font-size:20px;color:#E6DEFA}
+.hero small{display:block;color:#CFC3F2;font-size:16px;margin-top:20px}
+.hero .go{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.hero .go .alt{background:transparent;color:#fff;border:3px solid #fff}
+.chs{display:flex;align-items:flex-end;position:relative;z-index:1}
+.chs i{display:block;width:50%}.chs i+i{margin-left:-4%;margin-bottom:6%}
+@media(prefers-reduced-motion:no-preference){.chs i{animation:bob 3.4s ease-in-out infinite}.chs i+i{animation-delay:.7s}@keyframes bob{50%{transform:translateY(-9px)}}}
+.lead{max-width:720px}
+.test{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:520px;margin:20px 0}
+.test button{background:#fff;border:3px solid var(--v2);border-radius:26px;padding:16px;font:800 34px Unbounded,sans-serif;color:var(--v)}
+.test button i{display:block;width:70%;margin:0 auto 8px}
+.test button:hover{background:var(--lav)}
+.res{max-width:720px;background:var(--yb);border-left:8px solid var(--y);border-radius:16px;padding:16px 20px;font-weight:600}
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+.team{border-radius:26px;padding:22px;border:3px solid}
+.team.k{background:var(--rb);border-color:var(--r)}.team.b{background:var(--bb);border-color:var(--b)}
+.team h3{display:flex;align-items:center;gap:12px}.team h3 i{width:52px;flex:none}
+.team.k h3{color:#A8260F}.team.b h3{color:#1B6BA6}
+.team b{display:block;margin-top:8px}
+.note{font-size:16px;color:#5B5586}
+.band{background:#fff}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0}
+.st{border-radius:26px;padding:22px;border:3px solid}
+.st.s1{background:var(--rb);border-color:var(--r)}.st.s2{background:var(--yb);border-color:var(--y)}.st.s3{background:var(--bb);border-color:var(--b)}
+.st em{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:#fff;font:800 22px Unbounded,sans-serif;font-style:normal;margin-bottom:10px}
+.s1 em{background:var(--r)}.s2 em{background:var(--y)}.s3 em{background:var(--b)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{color:#fff;font-weight:800;border-radius:999px;padding:4px 14px;font-size:15px}
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin:12px 0 24px}
+.flow div{flex:1 1 180px;border-radius:18px;padding:14px;border:3px solid;font-size:16px}
+.flow b{display:block}
+.flow span{align-self:center;font-size:26px;font-weight:800;color:var(--v)}
+.lab{background:var(--lav)}
+.box{background:#fff;border-radius:30px;padding:clamp(18px,4vw,36px);border:3px solid var(--v2)}
+.ask{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.ask input{flex:1 1 220px;font:600 20px Nunito,sans-serif;padding:13px 20px;border:3px solid var(--v2);border-radius:999px;color:var(--ink);background:#fff}
+.ask button{background:var(--v);color:#fff}
+.ex{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:16px}
+.ex button{background:var(--lav);color:var(--v);padding:6px 16px;font-size:16px}
+.msg{margin:16px 0 0;font-weight:600;color:var(--v)}
+.card{margin-top:22px;border-radius:26px;border:3px solid;overflow:hidden}
+.card.k{border-color:var(--r)}.card.b{border-color:var(--b)}.card.m{border-color:var(--v2)}
+.hd{padding:16px 22px;color:#fff;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+.k .hd{background:var(--r)}.b .hd{background:var(--b)}.m .hd{background:var(--v2)}
+.hd h3{margin:0;font-size:28px}.hd span{font-weight:600}
+.pic{position:relative;min-height:190px;display:flex;align-items:center;justify-content:center;gap:10px;padding:26px 16px}
+.k .pic{background:var(--rb)}.b .pic{background:var(--bb)}.m .pic{background:var(--lav)}
+.pic .sc{font-size:clamp(52px,12vw,84px);line-height:1;letter-spacing:6px;text-align:center}
+.pic .sfx{position:absolute;right:16px;top:14px;background:var(--y);color:var(--ink);font:800 18px Unbounded,sans-serif;padding:14px 16px;transform:rotate(8deg);clip-path:polygon(50% 0,62% 18%,86% 8%,82% 32%,100% 44%,82% 58%,90% 84%,64% 76%,50% 100%,38% 78%,12% 88%,18% 60%,0 46%,18% 34%,10% 10%,36% 20%)}
+.pic .cc{position:absolute;left:12px;bottom:8px;display:flex;gap:4px}.pic .cc i{width:54px}
+.rows{padding:8px 22px 4px;background:#fff}
+.rw{padding:10px 0;border-bottom:1px solid var(--lav)}
+.rw b{margin-right:6px}
+.glue{margin:0;padding:18px 22px;background:var(--yb);font-size:19px;font-weight:600}
+.acts{display:flex;flex-wrap:wrap;gap:10px;padding:16px 22px;background:#fff}
+.acts button{background:var(--lav);color:var(--v)}
+.mk{padding:16px 22px 20px;background:var(--lav);display:grid;gap:10px}
+.mk h4{margin:0;font:800 18px Unbounded,sans-serif;color:var(--v)}
+.mk p{margin:0}
+.mk label{display:grid;gap:4px;font-weight:800;font-size:15px}
+.mk input{font:600 17px Nunito,sans-serif;padding:10px 16px;border:3px solid var(--v2);border-radius:999px;color:var(--ink);background:#fff}
+.mk .out{background:#fff;border-left:8px solid var(--y);border-radius:12px;padding:12px 16px;font-weight:600}
+.mk .r2{display:flex;flex-wrap:wrap;gap:10px}
+.mk .r2 button{background:var(--v);color:#fff}.mk .r2.al button{background:#fff;color:var(--v);border:3px solid var(--v2)}
+.mk .ap{display:grid;gap:12px}
+.as{background:#fff;border:3px solid var(--v2);border-radius:20px;overflow:hidden}
+.as-h{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;padding:12px 18px;background:var(--v2);color:#fff}
+.as-h b{font:800 18px Unbounded,sans-serif}
+.as-m{font-size:14px;font-weight:800;background:#fff;color:var(--v);border-radius:999px;padding:2px 12px}
+.as-e{font-size:34px;line-height:1.2;letter-spacing:4px;padding:10px 18px 0}
+.as-r{padding:4px 18px}
+.as .rw{padding:6px 0;font-size:16px}
+.as-g{margin:0;padding:12px 18px;background:var(--yb);font-weight:600}
+.as-a{display:flex;flex-wrap:wrap;gap:8px;padding:12px 18px}
+.mk .dr{background:#fff;border:3px solid var(--v2);border-radius:20px;padding:12px;display:grid;gap:10px}
+.mk .dr button{justify-self:start;background:var(--lav);color:var(--v);padding:8px 18px;font-size:15px}
+.mk .as-a button{background:var(--lav);color:var(--v);padding:8px 18px;font-size:15px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.src{font-size:15px;color:#5B5586}
+.foot{background:var(--v);color:#E6DEFA;text-align:center;padding:26px 20px;font-size:15px}
+@media(max-width:760px){.hero,.steps,.teams,.about{grid-template-columns:1fr}.chs{max-width:340px;margin:0 auto}.flow span{display:none}.pic .sfx{font-size:14px;padding:10px 12px}}
+}
+</style>
+
+<div id="bk">
+<header class="hero">
+  <div>
+    <p style="margin:0">Обучающая книга-пособие</p>
+    <h1>Секрет <span class="kb">Буба</span> и <span class="kk">Кики</span></h1>
+    <p>Как включить суперсилу мозга и запоминать любые английские слова без зубрёжки</p>
+    <div class="go"><button onclick="document.getElementById('bk-lab').scrollIntoView({behavior:'smooth'})">Спросить помощника</button><button class="alt" onclick="document.getElementById('bk-effect').scrollIntoView({behavior:'smooth'})">Пройти мини-тест</button></div>
+    <small>Авторы: Қайрулла Ақерке и Серик Амина<br>Школа-лицей города Аксу</small>
+  </div>
+  <div class="chs" aria-hidden="true"><i data-ch="kf"></i><i data-ch="bf"></i></div>
+</header>
+
+<section class="w" id="bk-effect">
+  <h2>Эффект «Буба – Кики»: звуки похожи на формы</h2>
+  <p class="lead">В 1929 году психолог Вольфганг Кёлер показал людям две фигуры — колючую и волнистую — и предложил назвать их «такете» и «малума». Почти все назвали колючую «такете». В 2001 году нейроучёные Рамачандран и Хаббард повторили опыт со словами «буба» и «кики». Так эффект получил своё имя.</p>
+  <p class="lead"><b>Проверь себя.</b> Одну фигуру зовут Буба, другую — Кики. Кто из них Буба? Ответь за три секунды.</p>
+  <div class="test"><button data-a="b"><i data-ch="b0"></i>А</button><button data-a="k"><i data-ch="k0"></i>Б</button></div>
+  <p class="res" id="bk-res" hidden aria-live="polite"></p>
+  <p class="lead">Почему так получается? Рот рисует форму: «бу-ба» — губы круглые, звук мягкий, «ки-ки» — губы растянуты, звук острый. Звук похож на форму: у «ки-ки» резкие зубцы, у «бу-бы» плавная волна. А мозг любит искать сходство между тем, что видит, слышит и чувствует.</p>
+  <div class="teams">
+    <div class="team k"><h3><i data-ch="kf"></i>Кики-слова</h3>острые, резкие, быстрые, колкие<b>sharp, spiky, quick, crack, tick, snap, thin, kick, thorn, crisp</b></div>
+    <div class="team b"><h3><i data-ch="bf"></i>Буба-слова</h3>мягкие, округлые, плавные, спокойные<b>balloon, plump, pillow, moon, cloud, bubble, pudding, blob, soft, cuddle</b></div>
+  </div>
+  <p class="note">Это тенденция, а не закон. В разных экспериментах цифры отличаются, но людей, выбирающих «как все», всегда заметно больше, чем при случайном угадывании. Есть и слова-миксы, например clumsy («неуклюжий») или hedgehog («ёж»): в них есть и резкое, и мягкое. Поэтому наш метод опирается сразу на звук и на смысл слова.</p>
+</section>
+
+<section class="w band" id="bk-method" style="max-width:none">
+ <div style="max-width:1000px;margin:0 auto">
+  <h2>Нейро-конструктор: три шага для любого слова</h2>
+  <p class="lead">Метод опирается на двойное кодирование (слово хранится и как слово, и как картинка), метод ключевого слова (Аткинсон и Рау, 1975) и эффект изолированности: то, что выделяется, запоминается лучше (фон Ресторф, 1933). Поэтому смешные и странные образы работают как научный приём.</p>
+  <div class="steps">
+    <div class="st s1"><em>1</em><h3>Сканируй</h3><p>Прошепчи слово и подумай о его смысле. Проведи рукой в воздухе: зигзаг — Кики, круг — Буба, оба — микс.</p><b>Если звук и смысл спорят, побеждает смысл.</b></div>
+    <div class="st s2"><em>2</em><h3>Оживи</h3><p>Нажми пять кнопок чувств и преувеличивай:</p><ul class="chips"><li style="background:#E8445A">цвет</li><li style="background:var(--y);color:var(--ink)">звук</li><li style="background:var(--g)">движение</li><li style="background:var(--b)">текстура</li><li style="background:var(--p)">эмоция</li></ul></div>
+    <div class="st s3"><em>3</em><h3>Склей</h3><p>Найди звуковой крючок: русское слово, похожее на английское. Помести его и перевод в один кадр и скажи: «[слово] — это [сцена], значит [перевод]».</p></div>
+  </div>
+  <h3>Пример: spiky</h3>
+  <div class="flow">
+    <div style="background:var(--rb);border-color:var(--r)"><b>Звучание</b>spiky [спайки]</div><span>→</span>
+    <div style="background:var(--yb);border-color:var(--y)"><b>Звуковой крючок</b>«ёж СПАЙК»</div><span>→</span>
+    <div style="background:var(--lav);border-color:var(--v2)"><b>Кадр-мультик</b>ёж лопает шарик: ПЫХ!</div><span>→</span>
+    <div style="background:var(--bb);border-color:var(--b)"><b>Перевод</b>колючий</div>
+  </div>
+  <p><b>Лесенка повторений.</b> Даже яркая картинка тускнеет, поэтому возвращайся к ней: сегодня → завтра → через 3 дня → через неделю → через месяц. Сначала вспомни кадр и перевод «из головы», потом проверь.</p>
+ </div>
+</section>
+
+<section class="w lab" id="bk-lab" style="max-width:none">
+ <div style="max-width:1000px;margin:0 auto">
+  <h2>Нейро-помощник Буба и Кики</h2>
+  <div class="box">
+    <p>Введи английское слово. Помощник определит, Буба оно или Кики, и соберёт нейро-клей: картинку, звуковой крючок и фразу для запоминания. А кнопка «Полные ассоциации» подберёт целые цепочки: крючок, кадр, пять чувств и клей.</p>
+    <div class="ask"><input id="bk-in" type="text" maxlength="30" placeholder="например: fragile" aria-label="Английское слово" autocomplete="off" autocapitalize="off" spellcheck="false"><button id="bk-go">Разобрать слово</button></div>
+    <div class="ex">Попробуй: <button>spiky</button><button>plump</button><button>clumsy</button><button>astonished</button></div>
+    <p class="msg" id="bk-msg" aria-live="polite"></p>
+    <div id="bk-out"></div>
+    <p class="note" style="margin:18px 0 0">Подсказки помощника — отправная точка. Лучше всего работает крючок, который придумал ты сам.</p>
+  </div>
+ </div>
+</section>
+
+<section class="w" id="bk-about">
+  <div class="about">
+    <div>
+      <h2>О проекте</h2>
+      <p>Исследовательский проект учениц 5 класса школы-лицея города Аксу. Мы проверяли эффект «Буба – Кики» на английских словах со школьниками 5–10 классов и создали на его основе книгу-пособие и этот сайт.</p>
+      <p>Научный руководитель: Филиппова Камила Айбековна.</p>
+    </div>
+    <div>
+      <h3>На что опирается метод</h3>
+      <p class="src">Кёлер, 1929; Рамачандран и Хаббард, 2001; Сепир, 1929; Маурер, Патман и Мондлох, 2006; Бремнер и соавторы, 2013; Цвек и соавторы, 2022; Эббингауз, 1885; Пайвио, 1970-е; Аткинсон и Рау, 1975; фон Ресторф, 1933.</p>
+    </div>
+  </div>
+  <!-- ОТЗЫВЫ: когда будут готовы, уберите атрибут hidden и замените текст -->
+  <div id="bk-reviews" hidden><h2>Как метод работает на практике</h2><p>Здесь появятся отзывы учеников и результаты применения метода.</p></div>
+</section>
+<footer class="foot">Секрет Буба и Кики. Нейро-пособие по английским словам.</footer>
+</div>
+
+<script>
+(function(){
+var API_URL=""; /* ← адрес вашего прокси (Cloudflare Worker), см. инструкцию. Пока пусто: работает демо-режим */
+var root=document.getElementById('bk');
+var $=function(s){return root.querySelector(s)};
+function h(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function ch(t,f){var b=t==='b',o=b?'<path d="M60 8C92 6 114 30 110 62C106 94 82 114 52 110C22 106 6 82 10 54C14 26 34 10 60 8Z" fill="'+(f?'#2A8FD6':'#A99BDD')+'" stroke="'+(f?'#1B6BA6':'#5B3DB5')+'" stroke-width="4"/>':'<polygon points="60,2 72,34 106,20 90,52 118,70 84,76 88,112 60,90 32,112 36,76 2,70 30,52 14,20 48,34" fill="'+(f?'#E8402A':'#A99BDD')+'" stroke="'+(f?'#A8260F':'#5B3DB5')+'" stroke-width="4" stroke-linejoin="round"/>';
+ if(f){var x=b?42:46,x2=b?78:74;o+='<circle cx="'+x+'" cy="56" r="8" fill="#fff"/><circle cx="'+x2+'" cy="56" r="8" fill="#fff"/><circle cx="'+x+'" cy="58" r="4" fill="#25214F"/><circle cx="'+x2+'" cy="58" r="4" fill="#25214F"/>';
+  o+=b?'<ellipse cx="30" cy="74" rx="8" ry="6" fill="#FF9DBB"/><ellipse cx="90" cy="74" rx="8" ry="6" fill="#FF9DBB"/><path d="M44 76q16 14 32 0" stroke="#25214F" stroke-width="4" fill="none" stroke-linecap="round"/>':'<path d="M34 40l16 7M86 40l-16 7" stroke="#25214F" stroke-width="5" stroke-linecap="round"/><path d="M46 84l7-9 7 9 7-9 7 9" stroke="#25214F" stroke-width="4" fill="none" stroke-linejoin="round" stroke-linecap="round"/>'}
+ return '<svg viewBox="0 0 120 120" aria-hidden="true">'+o+'</svg>'}
+function paint(el){el.querySelectorAll('[data-ch]').forEach(function(e){var a=e.dataset.ch;e.innerHTML=ch(a[0],a[1]==='f')})}
+paint(root);
+
+/* мини-тест */
+root.querySelectorAll('.test button').forEach(function(b){b.onclick=function(){var r=$('#bk-res');r.hidden=false;
+ r.textContent=b.dataset.a==='b'?'Ты в большой компании: фигуру А (круглую) назвали Бубой, а колючую Б — Кики. Так отвечает более 95% людей в опыте Рамачандрана и Хаббарда, и в США, и в Индии. В других опытах цифры от 80 до 98%.':'Ты услышал(а) по-своему, и так бывает: большинство людей называет круглую фигуру Бубой, а колючую Кики. Личные ассоциации тоже работают, а свои образы запоминаются даже лучше.'}});
+
+/* помощник */
+var T={buba:['Буба','b'],kiki:['Кики','k'],mix:['Микс: Буба + Кики','m']};
+var DEMO={
+spiky:{w:'spiky',rd:'спайки',tr:'колючий, с шипами',t:'kiki',d:1,scan:{s:'Резкие «п» и «к» и звенящее «ай» щёлкают, как иголки.',m:'Колючий — тот, кто колет. Рука рисует зигзаг.',v:'Звук ✓, смысл ✓: Кики'},se:{c:'кислотно-зелёные иголки на коричневом ёжике',s:'цык-цык-цык и громкое «ПЫХ!»',m:'иголки встают дыбом за секунду, как салют',x:'кончики колют пальцы',e:'ёж смущён и смешон: хотел обнять шарик, а шарик лопнул'},hook:'ёж СПАЙК',like:'Спайк — отличное имя для ёжика',glue:'Ёжик СПАЙК обнял шарик — ПЫХ! Он такой КОЛЮЧИЙ.',scene:['🦔','🎈','💥'],sfx:'ПЫХ!'},
+plump:{w:'plump',rd:'пламп',tr:'пухлый, пухленький',t:'buba',d:1,scan:{s:'«П-л-а-м-п»: губы два раза смыкаются, как мягкие подушечки, а посередине скользит плавное «л».',m:'Круглый, мягкий, пухлый. Руки сами показывают шар.',v:'Звук ✓, смысл ✓: Буба'},se:{c:'золотисто-розовый, как румяная выпечка',s:'«плюх!»: булочка садится в миску',m:'покачивается, как желе, и катится колобком',x:'мягкое тёплое тесто, ямочки на щёчках',e:'умиление, хочется сказать «ути-пути»'},hook:'ПАМПУШКА',like:'пухлая круглая булочка; а ещё «плюх» начинается так же, как «пламп»',glue:'Румяная ПАМПУШКА плюхнулась в миску со сметаной — она такая ПУХЛАЯ.',scene:['🥯','🥣','😊'],sfx:'ПЛЮХ!'},
+clumsy:{w:'clumsy',rd:'кламзи',tr:'неуклюжий',t:'mix',d:2,scan:{s:'Резкое «кл» (как «клац!») — это Кики, а вязкое «умзи» — это Буба. Слово само спотыкается посередине.',m:'У неуклюжего круглое неповоротливое тело (Буба) и постоянные столкновения с острыми углами (Кики).',v:'Микс. Правило миксов: Бубе — главную роль, Кики — сцену столкновения'},se:{c:'чёрно-белый пингвин и ярко-красные острые кубики',s:'«БАМ! БАМ! ТРЫНЬ!»',m:'пингвин размахивает крыльями и падает в замедленной съёмке',x:'скользкий лёд и колкие уголки',e:'пингвину неловко, а тебе смешно'},hook:'ХЛАМ',like:'после такого гостя остаётся только хлам',glue:'Круглый пингвин споткнулся о кубик, и вся башня коробок превратилась в ХЛАМ: какой же он НЕУКЛЮЖИЙ.',scene:['🐧','📦','💥'],sfx:'ТРЫНЬ!'},
+astonished:{w:'astonished',rd:'астоништ',tr:'поражённый, изумлённый',t:'mix',d:3,scan:{s:'Начало открытое «а» — рот сам округляется (Буба). Конец резкое «ништ», как вспышка (Кики).',m:'Изумление — это внезапность, как молния, только в круглой упаковке.',v:'Кики-эмоция в Буба-форме. Абстрактное слово: идём от эмоции'},se:{c:'чёрно-фиолетовое небо и жёлтая вспышка',s:'«КРА-А-АК! БАХ!», а потом мёртвая тишина',m:'волосы встают дыбом, человек подпрыгивает',x:'мурашки по коже',e:'«Ааа!» и тут же смех'},hook:'«А! СТО НИШТЯКОВ!»',like:'школьная шутка, нужна только для звука; придумай свой крючок, если не нравится',glue:'Мальчик открыл коробку — а там… «А! СТО НИШТЯКОВ!» — застыл с круглыми глазами и дыбом стоящими волосами: ИЗУМЛЁН.',scene:['😲','⚡','🎁'],sfx:'БАХ!'}};
+function guess(w){var k=(w.match(/[ktpcxzqie]/g)||[]).length,s=(w.match(/[bmlnwuo]/g)||[]).length,t=k>s+1?'kiki':s>k+1?'buba':'mix';
+ return{w:w,t:t,d:0,scan:{s:'В слове '+k+' резких и '+s+' мягких звуковых букв.',m:'Смысл важнее звука: если знаешь перевод, проверь, колючее слово или мягкое.',v:'Быстрый разбор по звуку: '+T[t][0]},demo:1}}
+function msg(t){$('#bk-msg').textContent=t}
+function copy(btn,txt){var done=function(){var o=btn.textContent;btn.textContent='Скопировано';setTimeout(function(){btn.textContent=o},1800)};
+ if(navigator.clipboard)navigator.clipboard.writeText(txt).then(done,done);else{var a=h('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()}}
+function row(p,l,x,c){if(!x)return;var r=h('div','rw');var b=h('b','',l+':');if(c)b.style.color=c;r.appendChild(b);r.appendChild(document.createTextNode(x));p.appendChild(r)}
+function show(c){msg('');var o=$('#bk-out');o.textContent='';var ty=T[c.t]||T.mix,k=ty[1],se=c.se||{},sc=c.scan||{};
+ var card=h('div','card '+k),hd=h('div','hd');hd.appendChild(h('h3','',c.w));
+ hd.appendChild(h('span','',(c.rd?'['+c.rd+'] ':'')+(c.tr?'— '+c.tr:'')));hd.appendChild(h('span','','Тип: '+ty[0]+(c.d?'   Сложность: '+'★'.repeat(c.d)+'☆'.repeat(3-c.d):'')));card.appendChild(hd);
+ if(c.scene&&c.scene.length){var p=h('div','pic'),s=h('div','sc',c.scene.slice(0,4).map(function(x){return String(x).slice(0,8)}).join(' '));p.appendChild(s);
+  if(c.sfx)p.appendChild(h('div','sfx',String(c.sfx).slice(0,14)));var cc=h('div','cc');cc.innerHTML=k==='m'?'<i></i><i></i>':'<i></i>';
+  var ids=k==='m'?['bf','kf']:[k+'f'];cc.querySelectorAll('i').forEach(function(e,j){e.dataset.ch=ids[j]});paint(cc);p.appendChild(cc);card.appendChild(p)}
+ var r=h('div','rows');row(r,'Звук',sc.s,'#A8260F');row(r,'Смысл',sc.m,'#1B6BA6');row(r,'Вердикт',sc.v,'#42268A');
+ row(r,'Цвет',se.c,'#E8445A');row(r,'Звук в кадре',se.s,'#B87F00');row(r,'Движение',se.m,'#1F9A6B');row(r,'Текстура',se.x,'#2A8FD6');row(r,'Эмоция',se.e,'#D6408A');
+ row(r,'Звуковой крючок',(c.hook||'')+(c.like?' ('+c.like+')':''),'#42268A');card.appendChild(r);
+ if(c.glue){var g=h('p','glue');g.appendChild(h('b','','Нейро-клей: '));g.appendChild(document.createTextNode(c.glue));card.appendChild(g)}
+ var a=h('div','acts');
+ if(c.glue){var b1=h('button','','Скопировать карточку');b1.onclick=function(){copy(b1,['Слово: '+c.w+' ['+(c.rd||'')+']','Тип: '+ty[0],'Перевод: '+(c.tr||''),'Цвет: '+(se.c||''),'Звук: '+(se.s||''),'Движение: '+(se.m||''),'Текстура: '+(se.x||''),'Эмоция: '+(se.e||''),'Звуковой крючок: '+(c.hook||''),'Нейро-клей: '+c.glue,'Лесенка повторений: сегодня, завтра, +3 дня, +7 дней, +месяц'].join('\n'))};a.appendChild(b1)}
+ if(c.img){var b2=h('button','','Скопировать описание для рисунка');b2.onclick=function(){copy(b2,c.img)};a.appendChild(b2)}
+  if(a.children.length)card.appendChild(a);mk(card,c);o.appendChild(card)}
+function esc(x){return String(x).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+function wr(x,n){var l=[],c='';String(x).split(/\s+/).forEach(function(a){if(c&&(c+' '+a).length>n){l.push(c);c=a}else c=(c+' '+a).trim()});if(c)l.push(c);return l.slice(0,2)}
+function local(k,t,hk,sc){var bg=k==='k'?'#FADFD8':k==='b'?'#DCEEFA':'#EAE4FA',ids=k==='m'?['bf','kf']:[k+'f'],F=' font-family="Nunito,sans-serif" font-weight="800" text-anchor="middle"',
+ o='<svg viewBox="0 0 400 300" role="img" aria-label="'+esc('Кадр: '+hk)+'"><rect width="400" height="300" rx="20" fill="'+bg+'"/>';
+ ids.forEach(function(id,i){o+=ch(id[0],1).replace('<svg viewBox="0 0 120 120" aria-hidden="true">','<svg x="'+(k==='m'?20+i*130:40)+'" y="70" width="140" height="140" viewBox="0 0 120 120">')});
+ o+='<rect x="170" y="16" width="214" height="52" rx="26" fill="#fff" stroke="#6B45CF" stroke-width="3"/><text x="277" y="49"'+F+' font-size="22" fill="#42268A">'+esc(t.slice(0,20))+'</text>';
+ o+='<rect y="224" width="400" height="76" fill="#42268A"/><text x="200" y="252"'+F+' font-size="21" fill="#FFD25A">'+esc(hk.slice(0,30))+'</text>';
+ wr(sc,42).forEach(function(l,i){o+='<text x="200" y="'+(274+i*18)+'"'+F+' font-size="14" fill="#fff">'+esc(l)+'</text>'});
+ return o+'</svg>'}
+function clean(src){var d=new DOMParser().parseFromString(String(src),'image/svg+xml'),sv=d.documentElement;if(!sv||sv.nodeName!=='svg'||d.querySelector('parsererror'))return null;
+ var ok='svg g path circle ellipse rect line polyline polygon text tspan defs lineargradient radialgradient stop'.split(' '),bad=0,all=[sv].concat([].slice.call(sv.querySelectorAll('*')));
+ all.forEach(function(e){if(ok.indexOf(e.nodeName.toLowerCase())<0){bad=1;return}[].slice.call(e.attributes).forEach(function(a){var n=a.name.toLowerCase();if(n.indexOf('on')===0||n.indexOf('href')>=0||/javascript:|url\((?!\s*['"]?#)/i.test(a.value))e.removeAttribute(a.name)})});
+ if(bad)return null;sv.setAttribute('viewBox','0 0 400 300');sv.removeAttribute('width');sv.removeAttribute('height');sv.setAttribute('role','img');return document.importNode(sv,true)}
+function mk(card,c){var m=h('div','mk'),used=c.hook?[c.hook]:[];m.appendChild(h('h4','','Собери свой клей'));
+ m.appendChild(h('p','note',c.demo?'Быстрый разбор не знает перевод и образ, поэтому собери клей сам: подставь свой крючок и сцену.':'Лучше всего работает клей, который придумал ты сам. Нажми «Полные ассоциации», и помощник предложит готовые цепочки. Или впиши свой крючок и нажми «Достроить мой крючок».'));
+ var seq=0;
+ function draw(t,k,s){var my=++seq;pic.hidden=false;pic.textContent='';pic.appendChild(h('p','note','Рисуем кадр…'));
+  function fin(n,note){if(my!==seq)return;pic.textContent='';pic.appendChild(n);pic.appendChild(h('p','note',note));if(API_URL){var rb=h('button','','Нарисовать заново');rb.onclick=function(){draw(t,k,s)};pic.appendChild(rb)}}
+  function lc(note){var d=h('div');d.innerHTML=local((T[c.t]||T.mix)[1],t,k,s);fin(d,note)}
+  if(!API_URL)return lc('Это быстрый набросок по твоим словам. Подключённый помощник рисует подробнее.');
+  fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({word:c.w,draw:1,t:c.t,tr:t,hook:k,scene:s})})
+  .then(function(x){if(!x.ok)throw 0;return x.json()})
+  .then(function(d){var n=clean(d.svg);if(!n)throw 0;fin(n,'Картинка нарисована по твоим ответам. Не нравится? Измени сцену и собери клей заново.')})
+  .catch(function(){lc('Помощник не смог нарисовать, вот быстрый набросок.')})}
+ function f(l,v,ph){var lb=h('label','',l),i=h('input');i.value=v||'';i.placeholder=ph;i.maxLength=90;lb.appendChild(i);m.appendChild(lb);return i}
+ var tr=f('Перевод',c.tr,'например: колючий'),hk=f('Звуковой крючок: русское слово, похожее на слово на слух',c.hook,'например: ёж СПАЙК'),sc=f('Что происходит в кадре (перевод должен быть героем)',c.sc,'например: ёжик лопает шарик');
+ var out=h('div','out'),r=h('div','r2'),al=h('div','r2 al'),ap=h('div','ap'),pic=h('div','dr'),b=h('button','','Собрать клей');pic.hidden=true;out.hidden=true;out.setAttribute('aria-live','polite');
+ b.onclick=function(){var t=tr.value.trim(),k=hk.value.trim(),s=sc.value.trim();out.hidden=false;
+  out.textContent=(!t||!k||!s)?'Заполни три поля: перевод, крючок и сцену.':'«'+c.w+'» — это '+k+': '+s+', значит '+t+'. Скажи это вслух три раза и представь кадр.';if(t&&k&&s)draw(t,k,s);else pic.hidden=true};
+ r.appendChild(b);
+ if(API_URL){var mo=h('button','','Ещё варианты клея');mo.onclick=function(){mo.disabled=true;mo.textContent='Думаем…';
+  fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({word:c.w,more:1,avoid:used})})
+  .then(function(x){if(!x.ok)throw 0;return x.json()})
+  .then(function(d){(d.alts||[]).slice(0,3).forEach(function(x){if(!x||!x.hook||!x.glue)return;used.push(x.hook);var ab=h('button','',String(x.hook).slice(0,40));
+   ab.onclick=function(){hk.value=x.hook;sc.value=x.sc||'';out.hidden=false;out.textContent=x.glue+(x.like?' ('+x.like+')':'')};al.appendChild(ab)})})
+  .catch(function(){out.hidden=false;out.textContent='Не получилось получить варианты. Попробуй ещё раз.'})
+  .then(function(){mo.disabled=false;mo.textContent='Ещё варианты клея'})};r.appendChild(mo);
+  function one(x){var d=h('div','as'),e=x.se||{},t=tr.value.trim()||c.tr||'',hd=h('div','as-h');
+   hd.appendChild(h('b','',x.hook));if(x.match)hd.appendChild(h('span','as-m','Сходство: '+x.match));d.appendChild(hd);
+   if(x.scene&&x.scene.length)d.appendChild(h('div','as-e',x.scene.slice(0,4).map(function(z){return String(z).slice(0,8)}).join(' ')+(x.sfx?'  '+String(x.sfx).slice(0,14):'')));
+   var q=h('div','as-r');row(q,'На слух',(x.why||'')+(x.like?(x.why?'. ':'')+x.like:''),'#42268A');row(q,'Кадр',x.sc,'#1F9A6B');row(q,'Цвет',e.c,'#E8445A');row(q,'Звук в кадре',e.s,'#B87F00');row(q,'Движение',e.m,'#1F9A6B');row(q,'Текстура',e.x,'#2A8FD6');row(q,'Эмоция',e.e,'#D6408A');row(q,'Проверка',x.check,'#42268A');d.appendChild(q);
+   var g=h('p','as-g');g.appendChild(h('b','','Клей: '));g.appendChild(document.createTextNode(x.glue));d.appendChild(g);
+   var a=h('div','as-a'),u=h('button','','Взять этот клей'),cp=h('button','','Скопировать');
+   u.onclick=function(){hk.value=String(x.hook).slice(0,90);sc.value=String(x.sc||'').slice(0,90);out.hidden=false;out.textContent=x.glue;u.textContent='Взято'};
+   cp.onclick=function(){copy(cp,['Слово: '+c.w,'Перевод: '+t,'Звуковой крючок: '+x.hook,'Кадр: '+(x.sc||''),'Цвет: '+(e.c||''),'Звук: '+(e.s||''),'Движение: '+(e.m||''),'Текстура: '+(e.x||''),'Эмоция: '+(e.e||''),'Нейро-клей: '+x.glue,'Лесенка повторений: сегодня, завтра, +3 дня, +7 дней, +месяц'].join('\n'))};
+   a.appendChild(u);a.appendChild(cp);d.appendChild(a);return d}
+  function ra(btn,own){var k=hk.value.trim(),lb=btn.textContent;
+   if(own&&!k){out.hidden=false;out.textContent='Впиши свой крючок в поле «Звуковой крючок», и я дострою вокруг него полную ассоциацию.';return}
+   pa.disabled=po.disabled=true;btn.textContent='Думаем…';
+   var body={word:c.w,assoc:1,tr:tr.value.trim()};if(own){body.hook=k;body.scene=sc.value.trim()}else body.avoid=used;
+   fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+   .then(function(x){if(!x.ok)throw 0;return x.json()})
+   .then(function(d){var n=0;ap.textContent='';(d.items||[]).slice(0,3).forEach(function(x){if(!x||!x.hook||!x.glue)return;n++;if(!own&&used.indexOf(x.hook)<0)used.push(x.hook);ap.appendChild(one(x))});if(!n)throw 0;out.hidden=true})
+   .catch(function(){out.hidden=false;out.textContent='Не получилось найти ассоциации. Попробуй ещё раз.'})
+   .then(function(){pa.disabled=po.disabled=false;btn.textContent=lb})}
+  var pa=h('button','','Полные ассоциации'),po=h('button','','Достроить мой крючок');
+  pa.onclick=function(){ra(pa,0)};po.onclick=function(){ra(po,1)};r.appendChild(pa);r.appendChild(po)}
+ m.appendChild(r);m.appendChild(al);m.appendChild(ap);m.appendChild(out);m.appendChild(pic);card.appendChild(m)}
+function ask(w){w=(w||'').trim().toLowerCase();
+ if(!/^[a-z][a-z' -]{0,29}$/.test(w)){msg('Введи одно английское слово латиницей, до 30 символов.');return}
+ if(DEMO[w])return show(DEMO[w]);
+ if(!API_URL)return show(guess(w));
+ msg('Буба и Кики думают над словом «'+w+'»…');var ac=new AbortController(),tm=setTimeout(function(){ac.abort()},45000);
+ fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({word:w}),signal:ac.signal})
+ .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(c){if(!c||!c.w)throw 0;show(c)})
+ .catch(function(){msg('Помощник не ответил. Проверь интернет и нажми «Разобрать слово» ещё раз.')}).then(function(){clearTimeout(tm)})}
+$('#bk-go').onclick=function(){ask($('#bk-in').value)};
+$('#bk-in').onkeydown=function(e){if(e.key==='Enter')ask(this.value)};
+root.querySelectorAll('.ex button').forEach(function(b){b.onclick=function(){$('#bk-in').value=b.textContent;ask(b.textContent)}});
+})();
+</script>
+
+</body>
+</html>
