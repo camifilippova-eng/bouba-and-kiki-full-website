@@ -84,10 +84,10 @@ export default {
       body: JSON.stringify({
         systemInstruction: { parts: [{ text: system }] },
         contents: [{ role: 'user', parts: [{ text: userText }] }],
-        generationConfig: { maxOutputTokens: assoc ? 8192 : draw ? 2048 : 6000, responseMimeType: 'application/json' }
+        generationConfig: { maxOutputTokens: assoc ? 8192 : draw ? 2048 : 6000, responseMimeType: 'application/json', thinkingConfig: { thinkingLevel: 'low' } }
       })
     });
-    if (!r.ok) return new Response('Upstream error ' + r.status, { status: 502, headers: cors });
+  if (!r.ok) { const t = await r.text(); return new Response('Upstream error ' + r.status + ': ' + t.slice(0, 300), { status: 502, headers: cors }); }
     const data = await r.json();
     const parts = (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
     const text = parts.filter(b => !b.thought).map(b => b.text || '').join('').replace(/```json|```/g, '').trim();
@@ -105,7 +105,7 @@ export default {
   }
 };
 
-async function callUpstream(url, options, tries = 4) {
+async function callUpstream(url, options, tries = 3) {
   let res;
   for (let i = 0; i < tries; i++) {
     res = await fetch(url, options);
