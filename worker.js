@@ -78,7 +78,7 @@ export default {
     if (draw) userText = 'Слово: ' + word + '\nТип: ' + kind + '\nПеревод (герой кадра): ' + tr + '\nЗвуковой крючок: ' + hook + '\nСцена: ' + scn;
     const system = draw ? SYSTEM_DRAW : assoc ? SYSTEM_ASSOC : more ? SYSTEM_MORE : SYSTEM;
     const model = draw ? (env.MODEL || 'gemini-flash-lite-latest') : (env.MODEL_HOOK || 'gemini-flash-latest');
-    const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent', {
+    const r = await callUpstream('https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent', {
       method: 'POST',
       headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
       body: JSON.stringify({
@@ -104,3 +104,13 @@ export default {
     return new Response(text, { headers: { ...cors, 'Content-Type': 'application/json' } });
   }
 };
+
+async function callUpstream(url, options, tries = 4) {
+  let res;
+  for (let i = 0; i < tries; i++) {
+    res = await fetch(url, options);
+    if (![429, 500, 503, 529].includes(res.status)) return res;
+    if (i < tries - 1) await new Promise(r => setTimeout(r, 700 * (i + 1)));
+  }
+  return res;
+}
