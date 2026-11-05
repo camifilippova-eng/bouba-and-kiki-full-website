@@ -105,12 +105,17 @@ export default {
   }
 };
 
+const ALT_MODEL = { 'gemini-flash-lite-latest': 'gemini-flash-latest', 'gemini-flash-latest': 'gemini-flash-lite-latest' };
+
 async function callUpstream(url, options, tries = 3) {
   let res;
   for (let i = 0; i < tries; i++) {
-    res = await fetch(url, options);
+    const u = i === 1
+      ? url.replace(/models\/([^:]+):/, (m, name) => 'models/' + (ALT_MODEL[name] || name) + ':')
+      : url;
+    res = await fetch(u, options);
     if (![429, 500, 503, 529].includes(res.status)) return res;
-    if (i < tries - 1) await new Promise(r => setTimeout(r, 700 * (i + 1)));
+    if (i < tries - 1) await new Promise(r => setTimeout(r, 400));
   }
   return res;
 }
